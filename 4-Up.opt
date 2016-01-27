@@ -1,0 +1,59 @@
+[DEF, %OBJROOT]
+PersistedBreakpointArray = Objs
+PersistedBreakpoint = Obj
+PersistedWatchpointArray = Objs
+
+[PersistedBreakpointArray]
+%HI = [0]
+
+[DEF, PersistedBreakpointArray]
+%[0] = "TYPE, PersistedBreakpoint"
+%NAME = ""
+
+[PersistedBreakpointArray[0]]
+Path = "D:\\4-Up WLAN Test System\\4-Up wlan test system.seq"
+SequenceName = "OpenSession_Instruments"
+StepName = "WfmGen&Write"
+StepIndex = 1
+StepId = "ID#:6pq0/AAROUaa00vNCyGohC"
+
+[%TYPES]
+PersistedBreakpoint = "PersistedBreakpoint"
+
+[DEF, PersistedBreakpoint]
+%LOCATION = "StdTypes"
+Path = Str
+SequenceName = Str
+Group = Num
+StepName = Str
+StepIndex = Num
+StepId = Str
+IsEnabled = Bool
+PassCount = Num
+Condition = Str
+%ROOT_TYPE = True
+
+[PersistedBreakpoint]
+SequenceName = "MainSequence"
+Group = 1
+IsEnabled = True
+%TIMESTAMP = 1371981768
+%VERSION = "5.1.0.226"
+%TYPELASTMOD = "5.1.0.226"
+%MINPRODVER = "5.1.0.0"
+%TYPE_FLG = 33554436
+
+[__Header__]
+ProductName = "TestStand"
+ProductVersion = 5.1.0.226
+CompatibleProdVersion = 5.1.0.0
+Version = 755
+Type = "TEPersisted"
+Path = "D:\\4-Up WLAN Test System\\4-Up.opt"
+ProductVersionString = "2013 (5.1.0.226)"
+Description = ""
+CharEncoding = ""
+
+[DEF, PersistedWatchpointArray]
+%NAME = ""
+

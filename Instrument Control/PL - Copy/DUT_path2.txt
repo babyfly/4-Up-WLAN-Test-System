@@ -1,0 +1,17 @@
+[Calibration Header]
+Add any items to the header portion of the file.
+After the section "Calibration Data" the data must be a CSV string. These numbers are Frequency in Hz, Power Level in dBm, PathLoss in dB and Error in dB
+Time , 3431949179.337241
+Temperature C , 0.000000
+[Calibration Data]
+2412000000,15.000000,22
+5190000000,15.000000,22
+5210000000,15.000000,22
+5290000000,15.000000,22
+5320000000,15.000000,22
+5500000000,15.000000,22
+5510000000,15.000000,22
+5530000000,15.000000,22
+5775000000,15.000000,22
+5785000000,15.000000,22
+5795000000,15.000000,22
