@@ -1,2 +1,0 @@
-Channel Frequency(Hz),Power Level(dBm),Channel BW(Hz),DataRate/MCS Index,Frame Format,DUT Configuration Time,IQ Spectrum Meas Time,SM Violation(%) ,SMM(dB),SMM(dB)(-33MHz  -  -30MHz) ,SMM(dB)(-30MHz  -  -20MHz) ,SMM(dB)(-20MHz  -  -11MHz) ,SMM(dB)(-11MHz  -  9MHz) ,SMM(dB)(-9MHz  -  9MHz) ,SMM(dB)(9MHz  -  11MHz) ,SMM(dB)(11MHz  -  20MHz) ,SMM(20MHz  -  30Hz) ,SMM(30MHz  -  33MHz) 
-2412000000.000000,15.000000,20000000.000000,6Mbps,OFDM,0.200000,0.000000,21474836.470000,0.000000

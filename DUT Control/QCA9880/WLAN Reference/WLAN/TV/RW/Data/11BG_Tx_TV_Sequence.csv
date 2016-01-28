@@ -1,5 +1,0 @@
-Standard ,Channel Frequency(Hz),Power Level(dBm),Channel Bandwidth (Hz),Idle Interval (s),OFDM Data Rate (Mbps),OFDM Payload Length (bytes),MCS Index,Guard Interval (s),80211n PLCP Frame Format,FEC Coding Type,DSSS Data Rate (Mbps),DSSS Payload Length (bytes),#Packets,N_SS
-1,2412000000.000000,15.000000,20000000.000000,0.000250,,,,,,,0,10,,
-1,2432000000.000000,15.000000,20000000.000000,0.000250,,,,,,,0,10,,
-1,2412000000.000000,15.000000,20000000.000000,0.000250,,,,,,,4,100,,
-1,2432000000.000000,15.000000,20000000.000000,0.000250,,,,,,,4,100,,
