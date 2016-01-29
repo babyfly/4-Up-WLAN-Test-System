@@ -1,0 +1,9 @@
+DUT S/N,28285D1AE364
+DUT MAC,28285D1AE364
+;;Test Name,CH,Dmod,Rate,Ants,Data,Unit,LimitLo,LimitHi,P/F,ReTest,UsedTime,Remark
+DUT Init,0,<NA>,<NA>,0,1,,1,1,PASS,0,,
+Calibration,0,<NA>,<NA>,0,1,,1,1,PASS,0,,
+Tx EVM,36.000000,802.11AC 80M,MCS0,1,-28.573100,dB,-9999,-5.00,PASS,0,?,Power = 13.50dBm
+Tx Freq Error,36.000000,802.11AC 80M,MCS0,1,-1.07,ppm,-20,20,PASS,0,?,Power = 13.50dBm
+Tx Power,36.000000,802.11AC 80M,MCS0,1,-10.77,dBm,-2.50,2.5,FAIL,0,?,Power = 13.50dBm
+Tx Mask,36.000000,802.11AC 80M,MCS0,1,0.00,%,0,5,PASS,0,?,Power = 13.50dBm
