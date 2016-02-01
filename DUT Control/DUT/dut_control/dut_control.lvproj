@@ -13,7 +13,6 @@
 		<Item Name="DLL" Type="Folder">
 			<Item Name="msvcr120d.dll" Type="Document" URL="../msvcr120d.dll"/>
 			<Item Name="PwrXtalCal.dll" Type="Document" URL="../PwrXtalCal.dll"/>
-			<Item Name="QCA_DUT_Func.dll" Type="Document" URL="../QCA_DUT_Func.dll"/>
 			<Item Name="qca_dut_func.h" Type="Document" URL="../qca_dut_func.h"/>
 			<Item Name="QCA_DUT_Func.lib" Type="Document" URL="../QCA_DUT_Func.lib"/>
 			<Item Name="QCAMSL_MSVC10R.dll" Type="Document" URL="../QCAMSL_MSVC10R.dll"/>
@@ -47,6 +46,8 @@
 				<Item Name="Telnet Session.ctl" Type="VI" URL="/&lt;vilib&gt;/addons/internet/telnet/telnet.llb/Telnet Session.ctl"/>
 				<Item Name="Validate Semaphore Size.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/semaphor.llb/Validate Semaphore Size.vi"/>
 			</Item>
+			<Item Name="DLLTest.dll" Type="Document" URL="../DLLTest.dll"/>
+			<Item Name="QCA_DUT_Func.dll" Type="Document" URL="../QCA_DUT_Func.dll"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>

@@ -8,6 +8,8 @@
 	<Item Name="Disconnect Standalone Wlan Card.vi" Type="VI" URL="../Disconnect Standalone Wlan Card.vi"/>
 	<Item Name="Get Mac Address.vi" Type="VI" URL="../Get Mac Address.vi"/>
 	<Item Name="Load Dut.vi" Type="VI" URL="../Load Dut.vi"/>
+	<Item Name="rx.vi" Type="VI" URL="../rx.vi"/>
+	<Item Name="rxstop.vi" Type="VI" URL="../rxstop.vi"/>
 	<Item Name="RxTestExample.vi" Type="VI" URL="../RxTestExample.vi"/>
 	<Item Name="Set Mac Address.vi" Type="VI" URL="../Set Mac Address.vi"/>
 	<Item Name="Start Rx.vi" Type="VI" URL="../Start Rx.vi"/>
