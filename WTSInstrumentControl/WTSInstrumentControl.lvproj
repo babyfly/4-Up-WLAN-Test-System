@@ -38,6 +38,7 @@
 		</Item>
 		<Item Name="Pathloss" Type="Folder">
 			<Item Name="PathlossConfig.vi" Type="VI" URL="../PathlossConfig.vi"/>
+			<Item Name="WritePathloss.vi" Type="VI" URL="../rx cal/WritePathloss.vi"/>
 		</Item>
 		<Item Name="RxTestExample.vi" Type="VI" URL="../RxTestExample.vi"/>
 		<Item Name="TxTestExample.vi" Type="VI" URL="../TxTestExample.vi"/>
