@@ -1,7 +1,0 @@
-DUT S/N,28285D1AE364
-DUT MAC,28285D1AE364
-;;Test Name,CH,Dmod,Rate,Ants,Data,Unit,LimitLo,LimitHi,P/F,ReTest,UsedTime,Remark
-Tx EVM,36.000000,802.11A ,OFDM54,1,-19.463600,dB,-9999,-25.00,FAIL,0,?,Power = 13.50dBm
-Tx Freq Error,36.000000,802.11A ,OFDM54,1,NaN,ppm,-20,20,FAIL,0,?,Power = 13.50dBm
-Tx Power,36.000000,802.11A ,OFDM54,1,0.50,dBm,-2.50,2.5,FAIL,0,?,Power = 13.50dBm
-Tx Mask,36.000000,802.11A ,OFDM54,1,0.00,%,0,5,PASS,0,?,Power = 13.50dBm
