@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This file describes a Scenario for the MCT instrument test  -->
+<Scenario xmlns="http://www.ni.com/WTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ni.com/WTS niWTSTestScenario.xsd">
+	<!-- Everything is encapsulated in a ScenarioName. a name does not have to be provided but any given -->
+	<!-- name will be repeated in the report file  -->
+	<ScenarioName>802.11ac_MIMO_80+80MHz_MCS9_Composite_Regression Loop Count=100</ScenarioName>
+	<Step>
+		<StepName>Clean Errors</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>
+			*cls
+		</Command>
+		<DurationLimit>1000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>Test Connection</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>*IDN?</Command>
+		<StringResult>
+			<ResponseIndex>1</ResponseIndex>
+			<ResponseName>Instrument Vendor</ResponseName>
+			<ExpectedValue>National Instruments</ExpectedValue>
+		</StringResult>
+		<DurationLimit>1000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>Reset to Defaults</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>
+		VisaErrorsIgnore on
+		VisaTimeout 120000
+			*RST
+			*wai
+			*cls
+		ROUTe:RF:PORT:DEFine 'Port0','RIO0'
+        ROUTe:RF:PORT:DEFine 'Port4','RIO0'
+		ROUTe:RF:PORT:DEFine 'Port1','RIO1'
+        ROUTe:RF:PORT:DEFine 'Port5','RIO1'
+	    VisaTimeout 2000
+		</Command>
+		<DurationLimit>120000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>WLAN 802.11ac GENERATION</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>
+			SOURce:RFSG:WLAN:NCHains 1
+			
+			SOURce:RFSG:WLAN:CSEGment1:PORTname 'Port0'
+			SOURce:RFSG:WLAN:CSEGment2:PORTname 'Port5'
+			SOURce:RFSG:WLAN:CSEGment1:FREQuency:CENTer 4800000000.000000
+			SOURce:RFSG:WLAN:CSEGment2:FREQuency:CENTer 5600000000.000000			
+			SOURce:RFSG:WLAN:CSEGment1:POWer:LEVel -10.000000    
+			SOURce:RFSG:WLAN:CSEGment2:POWer:LEVel -10.000000    
+            SOURce:RFSG:WLAN:ACTive:ALL:ENABle 1
+			SOURce:RFSG:WLAN:CSEGment1:EATTenuation 0
+			SOURce:RFSG:WLAN:CSEGment2:EATTenuation 0
+			
+			SOURce:RFSG:WLAN:PACKet:MCSindex 9
+			SOURce:RFSG:WLAN:PACKet:NSTS 1
+			SOURce:RFSG:WLAN:BWIDth 80+80
+			SOURce:RFSG:WLAN:IDLEtime 0.001000
+			SOURce:RFSG:WLAN:PHY VHT
+			SOURce:RFSG:WLAN:PACKet:GINTerval LONG
+			SOURce:RFSG:WLAN:PACKet:COUNt -1
+			SOURce:RFSG:WLAN:PACKet:PAYLoad:FECType BCC
+			SOURce:RFSG:WLAN:PACKet:PAYLoad:MAC 'FF:FF:FF:FF:FF:FF'
+			SOURce:RFSG:WLAN:PACKet:PAYLoad:LENGth 6070
+			*wai
+			SOURce:RFSG:WLAN:STATe ON
+			*opc?
+		</Command>
+		<DurationLimit>1000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>WLAN 802.11ac Composite Configure</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>
+		    CONFigure:RFSA:WLAN:NCHains 1
+			
+			CONFigure:RFSA:WLAN:CSEGment1:PORTname 'Port4'
+			CONFigure:RFSA:WLAN:CSEGment2:PORTname 'Port1'
+			CONFigure:RFSA:WLAN:CSEGment1:EATTenuation 0
+			CONFigure:RFSA:WLAN:CSEGment2:EATTenuation 0
+			CONFigure:RFSA:WLAN:ACTive:ALL 1
+			CONFigure:RFSA:WLAN:CSEGment1:FREQuency:CENTer 4800000000.000000
+			CONFigure:RFSA:WLAN:CSEGment2:FREQuency:CENTer 5600000000.000000
+			CONFigure:RFSA:WLAN:CSEGment1:POWer:MAXimum -2.000000
+			CONFigure:RFSA:WLAN:CSEGment2:POWer:MAXimum -2.000000
+			CONFigure:RFSA:WLAN:POWer:AUTO 0
+			
+			CONFigure:RFSA:WLAN:ALENgth:AUTO 1			
+			CONFigure:RFSA:WLAN:PHY VHT
+			CONFigure:RFSA:WLAN:BWIDth 80+80
+			CONFigure:RFSA:WLAN:PACKet:MCSindex 9
+			CONFigure:RFSA:WLAN:PACKet:NSTS 1
+			CONFigure:RFSA:WLAN:PACKet:PAYLoad:FECType BCC
+			CONFigure:RFSA:WLAN:PACKet:GINTerval LONG
+			CONFigure:RFSA:WLAN:PACKet:PAYLoad:LENGth 6070
+			CONFigure:RFSA:WLAN:PACKet:DMODe FIRST
+			*opc?
+			CONFigure:RFSA:WLAN:MEASurement:TXPower:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:OBW:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:SDENsity:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:PRAMp:ENABle 0
+			CONFigure:RFSA:WLAN:MEASurement:SEM:ENABle 1
+			
+			CONFigure:RFSA:WLAN:MEASurement:TXPower:AVERage:COUNt 1
+			CONFigure:RFSA:WLAN:MEASurement:SEM:AVERage:COUNt 1
+			CONFigure:RFSA:WLAN:MEASurement:OBW:AVERage:COUNt 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:AVERage:COUNt 1
+			
+			CONFigure:RFSA:WLAN:MEASurement:SEM:AVERage:TYPE RMS
+			CONFigure:RFSA:WLAN:MEASurement:SEM:FFT:WTYPe BHT7
+			CONFigure:RFSA:WLAN:MEASurement:SEM:SPAN 66E6
+			CONFigure:RFSA:WLAN:MEASurement:SEM:SPAN:AUTO:ENABle ON
+			CONFigure:RFSA:WLAN:MEASurement:SEM:TIME:LENGth 1.5e-3
+			CONFigure:RFSA:WLAN:MEASurement:SEM:TIME:OFFSet 0
+			CONFigure:RFSA:WLAN:MEASurement:SEM:TYPE STANDARD
+			CONFigure:RFSA:WLAN:MEASurement:SEM:REFerence:TYPE PEAK			
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:CRCheck:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:MSLocation 0
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:CFOMethod PDATA
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:ESTimation:COFFset:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:ESTimation:IMPairments:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:GPOWer:ENABle 1
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:TRACking:AMPLitude 0
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:TRACking:CHANnel 0
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:TRACking:PHASe STANDARD
+			CONFigure:RFSA:WLAN:MEASurement:MODulation:OFDM:TRACking:TIME 1
+			*opc?
+			TRIGger:RFSA:WLAN:SOURce 'RF 0'
+			TRIGger:RFSA:WLAN:THReshold -30
+			TRIGger:RFSA:WLAN:EDGE RISing
+			TRIGger:RFSA:WLAN:MQTime 5e-6
+			TRIGger:RFSA:WLAN:DELay 0
+			TRIGger:RFSA:WLAN:TOUT 10
+			*opc?
+		</Command>
+		<DurationLimit>48000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>WLAN 802.11ac Composite Initiate and Fetch</StepName>
+		<Instrument>MCT-1</Instrument>
+		<LoopCount>1</LoopCount>
+		<Command>
+			INITiate:RFSA:WLAN:RESults
+			*OPC?
+			FETCh:RFSA:WLAN:RESults:OBW?
+			FETCh:RFSA:WLAN:RESults:SEM:MARGin?
+			FETCh:RFSA:WLAN:RESults:SDENsity?
+			FETCh:RFSA:WLAN:RESults:TXPower:AVERage?
+			FETCh:RFSA:WLAN:RESults:MODulation:OFDM:EVM:STReam:AVERage?	
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:EVM:CHANnel:AVERage?	
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:GPOWer:AVERage?	
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:HEADer?	
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:SFLatness:AVERage?
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:SYMBols?	
+            FETCh:RFSA:WLAN:RESults:MODulation:OFDM:IMPairments:AVERage?			
+		</Command>
+		<NumericalResult>
+			<ResponseIndex>3</ResponseIndex>
+			<ResponseName>Measure OBW chain 1</ResponseName>
+			<USL>80E6</USL>
+			<LSL>70E6</LSL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>7</ResponseIndex>
+			<ResponseName>Measure OBW chain 2</ResponseName>
+			<USL>80E6</USL>
+			<LSL>70E6</LSL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>11</ResponseIndex>
+			<ResponseName>SEM Margin chain 1</ResponseName>
+			<LSL>0</LSL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>13</ResponseIndex>
+			<ResponseName>SEM Mask Margin Violation chain 1</ResponseName>
+			<USL>0</USL>
+		</NumericalResult>
+			<NumericalResult>
+			<ResponseIndex>15</ResponseIndex>
+			<ResponseName>SEM Margin chain 2</ResponseName>
+			<LSL>0</LSL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>17</ResponseIndex>
+			<ResponseName>SEM Mask Margin Violation chain 2</ResponseName>
+			<USL>0</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>19</ResponseIndex>
+			<ResponseName>SDENsity chain 1</ResponseName>
+			<LSL>-100</LSL>
+			<USL>-85</USL>
+	    </NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>21</ResponseIndex>
+			<ResponseName>SDENsity chain 2</ResponseName>
+			<LSL>-100</LSL>
+			<USL>-85</USL>
+	    </NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>23</ResponseIndex>
+			<ResponseName>Average Power chain 1</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>24</ResponseIndex>
+			<ResponseName>Peak Power chain 1</ResponseName>
+			<LSL>-6</LSL>
+			<USL>1</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>25</ResponseIndex>
+			<ResponseName>Average Power with Gap chain 1</ResponseName>
+			<LSL>-15</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>27</ResponseIndex>
+			<ResponseName>Average Power chain 2</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>28</ResponseIndex>
+			<ResponseName>Peak Power chain 2</ResponseName>
+			<LSL>-6</LSL>
+			<USL>1</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>29</ResponseIndex>
+			<ResponseName>Average Power with Gap chain 2</ResponseName>
+			<LSL>-15</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>31</ResponseIndex>
+			<ResponseName>Stream1 Avg EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>32</ResponseIndex>
+			<ResponseName>Stream1 Pilot EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>33</ResponseIndex>
+			<ResponseName>Stream1 Data EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>35</ResponseIndex>
+			<ResponseName>Stream2 Avg EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>36</ResponseIndex>
+			<ResponseName>Stream2 Pilot EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>37</ResponseIndex>
+			<ResponseName>Stream2 Data EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>39</ResponseIndex>
+			<ResponseName>Channel1 Avg EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>40</ResponseIndex>
+			<ResponseName>Channel1 Pilot EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>41</ResponseIndex>
+			<ResponseName>Channel1 Data EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>43</ResponseIndex>
+			<ResponseName>Channel2 Avg EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>44</ResponseIndex>
+			<ResponseName>Channel2 Pilot EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>45</ResponseIndex>
+			<ResponseName>Channel2 Data EVM</ResponseName>
+			<USL>-35</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>47</ResponseIndex>
+			<ResponseName>LTF Average Power chain 1</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>48</ResponseIndex>
+			<ResponseName>Payload Power chain 1</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>50</ResponseIndex>
+			<ResponseName>LTF Average Power chain 2</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>51</ResponseIndex>
+			<ResponseName>Payload Power chain 2</ResponseName>
+			<LSL>-14</LSL>
+			<USL>-9</USL>
+		</NumericalResult>
+		<StringResult>
+			<ResponseIndex>52</ResponseIndex>
+			<ResponseName>Data Rate</ResponseName>
+			<ExpectedValue>9</ExpectedValue>
+		</StringResult>
+		<NumericalResult>
+			<ResponseIndex>55</ResponseIndex>
+			<ResponseName>L-SIG Header Parity pass</ResponseName>
+			<LSL>1</LSL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>58</ResponseIndex>
+			<ResponseName>Spectral Flatness Margin chain 1</ResponseName>
+			<LSL>-6</LSL>
+			<USL>4</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>62</ResponseIndex>
+			<ResponseName>Spectral Flatness Margin chain 2</ResponseName>
+			<LSL>-6</LSL>
+			<USL>4</USL>
+		</NumericalResult>
+		<NumericalResult>
+			<ResponseIndex>64</ResponseIndex>
+			<ResponseName>OFDM Symbols</ResponseName>
+			<LSL>10</LSL>
+			<USL>360</USL>
+		</NumericalResult>
+		<DurationLimit>16000.00</DurationLimit>
+	</Step>
+	<Step>
+		<StepName>WLAN Stop Generator</StepName>
+		<Instrument>MCT-1</Instrument>
+		<Command>
+			SOURce:RFSG:WLAN:STATe off
+			*opc?
+			SOURce:RFSG:WLAN:STATe?
+			*opc? 
+		</Command>
+		<DurationLimit>8000.00</DurationLimit>
+	</Step>  
+</Scenario>

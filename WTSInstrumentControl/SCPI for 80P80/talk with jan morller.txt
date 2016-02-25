@@ -1,0 +1,119 @@
+[?1/?26/?2016 3:38 PM] Mingming Yang: 
+hello
+this is Mingming
+[?1/?26/?2016 3:39 PM] Jan Moeller: 
+hey Mengming
+sorry Mingming
+[?1/?26/?2016 3:42 PM] Mingming Yang: 
+if we want to test 80+80, that means we have to test each pair of antena. At the same time two VST can not map to one band of merlot. my question is how can we test 80+80 with wts?
+that is the mapping isssue we faced
+[?1/?26/?2016 3:43 PM] Jan Moeller: 
+two VSTs cannot map to the same ports
+but the signal can be split to separate ports
+[?1/?26/?2016 3:44 PM] Mingming Yang: 
+yes , right
+[?1/?26/?2016 3:44 PM] Jan Moeller: 
+the pinot cannot physically have 2 VSTs on the same port at the same time
+it can have 1 generator and 1 analyzer
+[?1/?26/?2016 3:45 PM] Mingming Yang: 
+I mean same band ,different port
+bank
+sorry 
+[?1/?26/?2016 3:46 PM] Jan Moeller: 
+they cannot be on the same bank (quadrant) so port 0-3 is one VST and 4-7 another
+the SG is actually transmitting on all 4 ports of the bank at the same time
+[?1/?26/?2016 3:47 PM] Mingming Yang: 
+yes , you are right, so the question comes. how can we connect 4 antennas to port if test 80+80?
+[?1/?26/?2016 3:47 PM] Jan Moeller: 
+do you need to measure on all 4 ports at the same time
+[?1/?26/?2016 3:48 PM] Mingming Yang: 
+not all 4 ports, we have to test  2 ports at the same time 
+[?1/?26/?2016 3:49 PM] Jan Moeller: 
+and you need to split the signal so you measure 80+80 on 2 antennas at the same time
+meaning you need 4 simultanius measurements (and 4 VSTs)?
+[?1/?26/?2016 3:50 PM] Mingming Yang: 
+but we have 2 vsts at most in wts
+[?1/?26/?2016 3:51 PM] Jan Moeller: 
+so if you need 4 VSTs then you cannot use the WTS HW you need to use a VST system and the WTS-IS SW stack
+we can run on VST only systems also
+we support up to 16x16 but have until now only tested 4x4
+[?1/?26/?2016 3:53 PM] Jan Moeller: 
+if you only need to use 2 VSTs then you can use WTS you just have to split the signal so one part is on PORT0 the other on PORT3 next uses Port1&5 then Port 2&6 and last 3&7
+thats how we handle 2x2 MIMO
+[?1/?26/?2016 3:56 PM] Mingming Yang: 
+if we connect att0 to port 0, att1 to port1; att2 to port 4, att3 to port5; we can att0&2 and att1&3, but  we can not test att0&1 and att2&3 since we can not change hardware connections during test. right?
+[?1/?26/?2016 3:59 PM] Jan Moeller: 
+we cannot measure simultanuously  on 2 ports on bank A (port 0-3) or on 2 ports on bank B (4-7) we can measure simultanuously on any combination of bank A and B
+[?1/?26/?2016 4:00 PM] Mingming Yang: 
+this dut need to be test arbitrary two antennas 
+[?1/?26/?2016 4:00 PM] Jan Moeller: 
+if you need todo that then you should use a VST only system and switches. which we also support in WTS-IS
+then you have the ports on the VSTs and then separate commands for the switches
+then you can in principle route anything to anything
+[?1/?26/?2016 4:01 PM] Jan Moeller: 
+but the Pinot/Merlot switch cannot physically have 2 analysers on the same bank at the same time
+it is also so that the generator transmits out of all 4 ports in a bank at the same time
+[?1/?26/?2016 4:02 PM] Jan Moeller: 
+we can attenuate the signal per port but we physically cannot turn it off
+[?1/?26/?2016 4:06 PM] Mingming Yang: 
+so you mean we can not test 80+80 using wts/wtm for this case, right?
+[?1/?26/?2016 4:07 PM] Jan Moeller: 
+if you need to measure any combination on 4 antennas at the same time then its not possible to physically connect it to a WTS HW system
+then you need to use pure VSTs and switcing
+or you need to split it even more and use a 16 port WTS
+having evey antenna connected to 4 ports
+[?1/?26/?2016 4:09 PM] Jan Moeller: 
+so antenna 1 is on Port 0,4,8,12 and antenna 2 on 1,5,9,13 etc
+then you can measure all combinations 
+but there is still only 2 VSTs 
+[?1/?26/?2016 4:09 PM] Mingming Yang: 
+do we have 16 prots wts with 4 vsts?
+[?1/?26/?2016 4:09 PM] Jan Moeller: 
+nope
+[?1/?26/?2016 4:10 PM] Mingming Yang: 
+ok , i see
+[?1/?26/?2016 4:10 PM] Jan Moeller: 
+do you need 4 VSTs?
+[?1/?26/?2016 4:11 PM] Mingming Yang: 
+ we need to demo 4-up wlan test system with 80+80 test capaility based on wts/wtm
+if this case , yes
+[?1/?26/?2016 4:11 PM] Jan Moeller: 
+but understand that a vst only system is also WTS
+we created 4x4 mimo on a vst only system
+and my test system is also only a chassis and 2 VSTs
+and we do also support switches
+[?1/?26/?2016 4:13 PM] Jan Moeller: 
+so the SW stack will still work
+and WTM can also work with that (though we dont have component for controlling the switch yet)
+[?1/?26/?2016 4:15 PM] Mingming Yang: 
+so what is the best solution for this case from your view
+[?1/?26/?2016 4:16 PM] Jan Moeller: 
+i must say its not completely clear for me what you try todo
+it does not really sound like production test
+[?1/?26/?2016 4:17 PM] Mingming Yang: 
+we have to show our test capability before move to production line
+the customer is a ODM
+[?1/?26/?2016 4:18 PM] Jan Moeller: 
+yeah but then the instrument you demo is very differnet from the one you need in production 
+if its a demo then i would use a WTS system to show you can measure 80+80 and MIMO and then tell them that we can scale to whatever they will end up with liking
+[?1/?26/?2016 4:19 PM] Jan Moeller: 
+if they end up having to measure 80+80 in 4x4 mimo simultanuasly then we can do that. we will just need 16 VSTs todo it
+and when they see the price they will probably figure out that thats probably not what they want
+[?1/?26/?2016 4:22 PM] Jan Moeller: 
+if you need to measure it on 2 antennas simultanously you will need 4 VSTs 
+so if you want to demo that then take a chassis and 4 VSTs and then probably a switch or 2
+[?1/?26/?2016 4:23 PM] Mingming Yang: 
+another option is to use two VSTs and switch
+[?1/?26/?2016 4:23 PM] Jan Moeller: 
+also doable
+but why not then a 16 port WTS
+or show only on the 3 antennas
+i am pretty sure that the company you demo too understand that switching an RF signal is something that can be done
+[?1/?26/?2016 4:24 PM] Jan Moeller: 
+so you should only need to demo 80+80 and MIMO
+the rest is geography
+[?1/?26/?2016 4:26 PM] Mingming Yang: 
+ok  , got it 
+thanks a lot
+[?1/?26/?2016 4:26 PM] Jan Moeller: 
+more than welcome
