@@ -1,4 +1,4 @@
-#ifdef DLL_QMSL_AEROFLEX
+﻿#ifdef DLL_QMSL_AEROFLEX
 #else
 #define DLL_QMSL_AEROFLEX extern "C" _declspec(dllimport)
 #endif 
@@ -130,6 +130,7 @@
 					95 - AC HT80 MCS7 
 					96 - AC HT80 MCS8 
 					97 - AC HT80 MCS9 
+					233- AC VHT160 MCS9
 */
 /// <param name="wlanMode">wlan Mode</param>
 /*
@@ -146,6 +147,8 @@
 					9: VHT80_1
 					10:VHT80_2
 					11:VHT80_3
+					12:VHT80P80
+					13:VHT160
 */
 /// <param name="pktLen0">Packet length or PayLoad Size</param>
 //    pktLen0 ==1500
@@ -170,15 +173,16 @@
  
 
 /// <param name="txChain0">bandwidth ==0</param>
-/*                    1: chain0
+/*                   			  1: chain0
 					  2: chain1
 					  3: chain0 and chain1
 					  4: chain2
 					  5: chain0 and chain2
+					  6: chain1 and chain2
 					  7: chain0， chain1 and chain2
 					  8:  chain3
-					  9： chain1 and chain3
-					  10: chain0 chain1 and chain3
+					  9： chain0 and chain3
+					  10: chain1 and chain3
 					  11: chain2 and chain3
 					  12: chain2 and chain3
 					  13: chain0 ，chain2 and chain3
@@ -271,6 +275,7 @@
 					58 - AC HT80 MCS7 
 					59 - AC HT80 MCS8 
 					60 - AC HT80 MCS9 
+					192- AC 80P80 MCS9
 */
 /// <param name="wlanMode"> wlan Mode</param>
 /*
@@ -287,19 +292,22 @@
 					9: VHT80_1
 					10:VHT80_2
 					11:VHT80_3
+					12:VHT80P80
+					13:VHT160
 */
 /// <param name="antenna"> wlan Mode</param>
 /// <param name="bandwidth"> bandwidth  ==0</param>
 /// <param name="rxChain">Rx Chain to turn on</param>
-/*                    1:  chain0
-					  2:  chain1
-					  3:  chain0 and chain1
-					  4:  chain2
-					  5:  chain0 and chain2
-					  7:  chain0， chain1 and chain2
+/*                   			  1: chain0
+					  2: chain1
+					  3: chain0 and chain1
+					  4: chain2
+					  5: chain0 and chain2
+					  6: chain1 and chain2
+					  7: chain0， chain1 and chain2
 					  8:  chain3
-					  9： chain1 and chain3
-					  10: chain0 chain1 and chain3
+					  9： chain0 and chain3
+					  10: chain1 and chain3
 					  11: chain2 and chain3
 					  12: chain2 and chain3
 					  13: chain0 ，chain2 and chain3
