@@ -74,9 +74,10 @@
 /// <param name="channel">channe2 number</param>
 //  for  80Mplus80M , the number is Mhz,such as 5290MHZ for channel 58
 /// <param name="rateBitIndex0">Tx Data Rate</param>
+					0 - 1MBPS
+					6 - 11S
 
-
-/*                  8 - 6Mbps
+/*                  			8 - 6Mbps
 					9 - 9Mbps
 					10 - 12Mbps
 					11 - 18Mbps
